@@ -1,7 +1,7 @@
 {% extends 'cpasis/base.html' %}
 {% load crispy_forms_filters %}
 {% block conteudo %}
-    <h1>Cadastrar Indicador</h1>
+    <h1>Editar Indicador</h1>
     <div class="mx-4 my-4">
         <form method="POST" enctype="multipart/form-data" class="form-check-inline mt-5 input-group">
             {% csrf_token %}
@@ -40,7 +40,8 @@
 
             </div>
 
-            <input type="submit" value="Cadastrar" class="btn btn-primary form-check-inline menu">
+
+            <input type="submit" value="Editar" class="btn btn-warning form-check-inline menu">
 
         </form>
     </div>
@@ -90,6 +91,5 @@
         </table>
 
     </div>
-
 
 {% endblock conteudo %}

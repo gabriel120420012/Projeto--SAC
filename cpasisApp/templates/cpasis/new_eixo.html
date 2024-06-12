@@ -1,15 +1,20 @@
 {% extends 'cpasis/base.html' %}
+{% load crispy_forms_filters %}
 {% block conteudo %}
-    <h1>Cadastro de Eixos</h1>
+    <h1>Cadastrar Eixos</h1>
     <div class="mx-4">
-    <form method="POST" enctype="multipart/form-data" class="form-check-inline mt-5">
-        {% csrf_token %}
-        <div class="form-check-inline">{{ form }}</div>
-        <input type="submit" value="Cadastrar" class="btn btn-success form-check-inline">
+        <form method="POST" enctype="multipart/form-data" class="form-check-inline mt-5 input-group">
+            {% csrf_token %}
+            <div class="form-control">
+                <div class="col-lg-6">
+                    {{ form.nome_eixo |as_crispy_field }}
+                </div>
+            </div>
+            <input type="submit" value="Cadastrar" class="btn btn-primary form-check-inline menu">
 
-    </form>
+        </form>
     </div>
-    <div class="mb-5 container mt-4">
+     <div class="mb-5  mt-4 my-2 mx-2">
         <table class="table table-light">
             <thead>
             <tr>
