@@ -1,0 +1,44 @@
+{% extends 'cpasis/base.html' %}
+{% load crispy_forms_filters %}
+{% block conteudo %}
+    <h1>Cadastrar Indicador</h1>
+    <div class="mx-4 my-4">
+
+    </div>
+    <div class="mb-5  mt-4 my-2 mx-2">
+
+        <div class="row">
+            {% for ind in inds %}
+                <div class="col-md-6 mb-2">
+                    <div class="card ">
+                        <div class="card-body">
+                            <div><img src="{{ ind.foto_url }}" alt="icone"></div>
+                            <div>{{ ind.nome_indicador }}</div>
+                            <div>{{ ind.id_eixo }}</div>
+                            <div>{{ ind.id_dim }}</div>
+                            <div>{{ ind.id_curso }}</div>
+                            <div>{{ ind.id_pub }}</div>
+                            <div>{{ ind.id_campus }}</div>
+                            <div><a href="{% url 'editar_ind' ind.id_indicador %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(253, 231, 76)"
+                                     class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
+                                </svg>
+                            </a></div>
+                            <div><a href="{% url 'deletar_ind' ind.id_indicador %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(195, 66, 63)"
+                                     class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                                </svg>
+                            </a></div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+{% endblock conteudo %}

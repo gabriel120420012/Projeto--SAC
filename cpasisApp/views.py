@@ -7,17 +7,10 @@ from cpasisApp.forms import EixoForm, DimensaoForm, IndicadorForm,TipoForm, Curs
 def principal(request):
     return render(request, 'cpasis/principal.html')
 
-def index(request):
-    return render(request, 'cpasis/index.html')
 
-def login(request):
-    return render(request, 'cpasis/login.html')
+def home(request):
 
-def register(request):
-    return render(request, 'cpasis/register.html')
-
-def index1(request):
-    return render(request, 'cpasis/index1.html')
+    return render(request, 'cpasis/home.html')
 
 def new_eixo(request):
     form = EixoForm(request.POST)
@@ -209,10 +202,10 @@ def new_pub(request):
 
 def editar_publico(request, id):
     pub = get_object_or_404(Publico, pk=id)
-    form =PublicoForm(instance=pub)
+    form = PublicoForm(instance=pub)
     pubs = Publico.objects.all()
 
-    if (request.method == "POST"):
+    if request.method == "POST":
         form = PublicoForm(request.POST, request.FILES, instance=pub)
 
         if form.is_valid():
@@ -330,3 +323,11 @@ def deletar_curso(request, id):
         return redirect('new_pub')
     return render(request, "cpasis/deletar_curso.html", {'curso': curso, 'form': form, 'cursos': cursos})
 
+# avliar indicador
+
+def avaliar_ind(request):
+    form = IndicadorForm(request.POST)
+    inds = Indicador.objects.all()
+
+    context = {'form': form, 'inds': inds}
+    return render(request, 'cpasis/avaliar_indicador.html', context)
