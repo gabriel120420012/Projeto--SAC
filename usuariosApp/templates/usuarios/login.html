@@ -1,0 +1,28 @@
+{% extends "cpasis/home.html" %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block conteudo %}
+    <div class="row justify-content-center mt-5 ">
+
+        <div class="col-lg-4 col-md-6 col-sm-12 p-5">
+
+        </div>
+        <div  >
+            <form action="" method="POST" class="col-sm-12 mx-4">
+                {% csrf_token %}
+
+                <div class=" ">
+                    {{ form.username|as_crispy_field }}
+                </div>
+                <div class="">
+                    {{ form.password|as_crispy_field }}
+                </div>
+                <input type="submit" value="Logar" class="btn btn-primary input-group">
+            </form>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 p-5 ">
+
+        </div>
+    </div>
+{% endblock conteudo %}

@@ -21,13 +21,13 @@ from django.conf.urls.static import static
 from django.views.static import serve
 from django.conf import settings
 from cpasisApp.views import principal, new_eixo, editar_eixo, deletar_eixo, editar_dim,deletar_dim, new_dim
-from cpasisApp.views import new_ind, editar_ind, deletar_ind, new_campus, editar_campus, deletar_campus
-from cpasisApp.views import new_pub, deletar_publico, editar_publico, new_tipo, editar_tipo, deletar_tipo,editar_curso,new_curso,deletar_curso
-from cpasisApp.views import index, login, register, index1
+from cpasisApp.views import new_ind, editar_ind, deletar_ind, new_campus, editar_campus, deletar_campus, avaliar_ind
+from cpasisApp.views import new_pub, deletar_publico, editar_publico, new_tipo, editar_tipo, deletar_tipo,editar_curso,new_curso,deletar_curso,home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', principal, name='principal'),
+    path('principal', principal, name='principal'),
+    path('home/', home, name='home'),
     path('new_eixo/', new_eixo, name='new_eixo'),
     path('editar_eixo/<str:id>', editar_eixo, name='editar_eixo'),
     path('deletar/<str:id>',deletar_eixo, name='deletar_eixo'),
@@ -56,10 +56,11 @@ urlpatterns = [
     path('editar_curso/<str:id>', editar_curso, name='editar_curso'),
     path('deletar_curso/<str:id>', deletar_curso, name='deletar_curso'),
 
-    path('index', index, name='index'),
-    path('index1', index1, name='index1'),
-    path('login', login, name='login'),
-    path('register', register, name='register'),
+    #usuários
+    path('', include('usuariosApp.urls')),
+
+    #avaliar
+    path('avaliar_ind',avaliar_ind ,name='avaliar_ind'),
 
     re_path(r'^img/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
